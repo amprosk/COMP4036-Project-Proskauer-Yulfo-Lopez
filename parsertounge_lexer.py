@@ -22,7 +22,7 @@ class ptLexer(Lexer):
 
     # Set of token names.   This is always required
     tokens = { TOKEN_INT, TOKEN_PERIOD, TOKEN_SUM, 
-              TOKEN_MINUS, TOKEN_IGUAL, TOKEN_X, TOKEN_Y, TOKEN_Z, COMMENT, NEWLINE, ENDPROG }
+              TOKEN_MINUS, TOKEN_IGUAL, TOKEN_X, TOKEN_Y, TOKEN_Z, COMMENT, NEXT_EQUATION, END__SYSTEM  }
 
     # String containing ignored characters between tokens
     ignore = ' \t'
@@ -30,18 +30,18 @@ class ptLexer(Lexer):
     # Regular expression rules for tokens
 
     #Tokens
-    TOKEN_INT       = r'\d+'
-    TOKEN_PERIOD    = r'\.'
-    TOKEN_SUM       = r'\+'
-    TOKEN_MINUS     = r'-'
-    TOKEN_IGUAL     = r'='
-    TOKEN_X         = r'[xX]'
-    TOKEN_Y         = r'[yY]'
-    TOKEN_Z         = r'[zZ]'
-    COMMENT         = r'#.*'
-    NEWLINE         = r'\n'
-    ENDPROG         = r'&'
-
+    TOKEN_INT        = r'\d+'
+    TOKEN_PERIOD     = r'\.'
+    TOKEN_SUM        = r'\+'
+    TOKEN_MINUS      = r'-'
+    TOKEN_IGUAL      = r'='
+    TOKEN_X          = r'[xX]'
+    TOKEN_Y          = r'[yY]'
+    TOKEN_Z          = r'[zZ]'
+    #COMMENT         = r'#.*'
+    NEXT_EQUATION    = r'&'
+    END__SYSTEM      = r'#'
+    
     #Numbers
     @_(r'\d+')
     def TOKEN_INT(self, t):
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     #equation_2 = [TOKEN_X, TOKEN_Y, TOKEN_Z]
     #equation_3 = [TOKEN_X, TOKEN_Y, TOKEN_Z]
     
-    system = "5x+3y-z=6 \n 7.2x-8y+1.9z=6.2 \n 13y-7.2x+z=4.2 &"
+    system = "5x+3y-z=6 & 7.2x-8y+1.9z=6.2 & 13y-7.2x+z=4.2 #"
     lexer = ptLexer()
     for tok in lexer.tokenize(system):
         print(tok)
@@ -75,10 +75,3 @@ if __name__ == '__main__':
 #              print('type = %r, value = %r' % (token.type, token.value))
 #              equation.append(token.value)
 #            print(f'Equation #1: {equation}')
-            
-
-            
-            
-                
-    
-    
