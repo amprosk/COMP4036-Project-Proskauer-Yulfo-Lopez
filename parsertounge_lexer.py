@@ -22,7 +22,7 @@ class ptLexer(Lexer):
 
     # Set of token names.   This is always required
     tokens = { TOKEN_INT, TOKEN_PERIOD, TOKEN_SUM, 
-              TOKEN_MINUS, TOKEN_IGUAL, TOKEN_X, TOKEN_Y, TOKEN_Z, COMMENT, NEXT_EQUATION, END__SYSTEM  }
+              TOKEN_MINUS, TOKEN_IGUAL, TOKEN_X, TOKEN_Y, TOKEN_Z, COMMENT, NEXT_EQUATION, END_SYSTEM }
 
     # String containing ignored characters between tokens
     ignore = ' \t'
@@ -40,7 +40,7 @@ class ptLexer(Lexer):
     TOKEN_Z          = r'[zZ]'
     #COMMENT         = r'#.*'
     NEXT_EQUATION    = r'&'
-    END__SYSTEM      = r'#'
+    END_SYSTEM      = r'#'
     
     #Numbers
     @_(r'\d+')
@@ -64,14 +64,14 @@ if __name__ == '__main__':
     for tok in lexer.tokenize(system):
         print(tok)
 
-#    while True:
-#        try:
-#            text = input('Parsertongue > ')
-#        except EOFError:
-#            break
-#        if text:
-#            lexx = lexer.tokenize(text)
-#            for token in lexx:
-#              print('type = %r, value = %r' % (token.type, token.value))
-#              equation.append(token.value)
-#            print(f'Equation #1: {equation}')
+    while True:
+        try:
+            text = input('Parsertongue > ')
+        except EOFError:
+            break
+        if text:
+            lexx = lexer.tokenize(text)
+            for token in lexx:
+              print('type = %r, value = %r' % (token.type, token.value))
+              equation.append(token.value)
+            print(f'Equation #1: {equation}')
