@@ -38,6 +38,18 @@ class ptParser(Parser):
     def number(self, p):
         return p.number
     
+    @_('x_term')
+    def number(self, p):
+        return p.x_term
+    
+    @_('y_term')
+    def number(self, p):
+        return p.y_term
+    
+    @_('z_term')
+    def number(self, p):
+        return p.z_term
+    
     @_('number TOKEN_X')
     def x_term(self, p):
         return p.number
@@ -74,11 +86,15 @@ class ptParser(Parser):
     def z_term(self, p):
         return -1.0
         
-    @_('x_term y_term z_term TOKEN_IGUAL number')
-    def equation(self, p):
-        return np.array([p.x_term, p.y_term, p.z_term, p.number])
+    @_('x_term y_term z_term TOKEN_IGUAL number NEXT_EQUATION x_term y_term z_term TOKEN_IGUAL number NEXT_EQUATION x_term y_term z_term TOKEN_IGUAL number END_SYSTEM')
+    def (self, p):
+        self.coefficients = np.array([[p.x_term0, p.y_term0, p.z_term0],
+                                      [p.x_term1, p.y_term1, p.z_term1],
+                                      [p.x_term2, p.y_term2, p.z_term2]])
+        return 
+        
     
-    @_('x_term z_term y_term TOKEN_IGUAL number')
+    '''@_('x_term z_term y_term TOKEN_IGUAL number')
     def equation(self, p):
         return np.array([p.x_term, p.y_term, p.z_term, p.number])
         
@@ -109,7 +125,7 @@ class ptParser(Parser):
         return END_SYSTEM
     
     #@_('END_SYSTEM')
-    #def 
+    #def'''
 
 if __name__ == '__main__':
     lexer = ptLexer()
