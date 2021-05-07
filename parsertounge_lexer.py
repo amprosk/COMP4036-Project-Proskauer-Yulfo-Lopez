@@ -22,7 +22,7 @@ class ptLexer(Lexer):
 
     # Set of token names.   This is always required
     tokens = { TOKEN_INT, TOKEN_PERIOD, TOKEN_SUM, 
-              TOKEN_MINUS, TOKEN_IGUAL, TOKEN_X, TOKEN_Y, TOKEN_Z, COMMENT, NEXT_EQUATION, END_SYSTEM }
+              TOKEN_MINUS, TOKEN_IGUAL, TOKEN_X, TOKEN_Y, TOKEN_Z, NEXT_EQUATION, END_SYSTEM }
 
     # String containing ignored characters between tokens
     ignore = ' \t'
@@ -38,9 +38,8 @@ class ptLexer(Lexer):
     TOKEN_X          = r'[xX]'
     TOKEN_Y          = r'[yY]'
     TOKEN_Z          = r'[zZ]'
-    #COMMENT         = r'#.*'
     NEXT_EQUATION    = r'&'
-    END_SYSTEM      = r'#'
+    END_SYSTEM       = r'#'
     
     #Numbers
     @_(r'\d+')
@@ -49,9 +48,9 @@ class ptLexer(Lexer):
         return t
     
     #Comments
-    @_(r'#.*')
-    def COMMENT(self, t):
-        pass
+    #@_(r'#.*')
+    #def COMMENT(self, t):
+    #    pass
 
 if __name__ == '__main__':
     #equation = '5.6x + 22y - z = 3'
