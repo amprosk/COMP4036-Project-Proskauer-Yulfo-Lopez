@@ -92,8 +92,8 @@ class ptParser(Parser):
                                       [p.x_term1, p.y_term1, p.z_term1],
                                       [p.x_term2, p.y_term2, p.z_term2]])
         self.results = np.array([p.number0, p.number1, p.number2])
-        print(self.coefficients)
-        print(self.results)
+        #print(self.coefficients)
+        #print(self.results)
         return p.END_SYSTEM
     
     @_('x_term y_term TOKEN_IGUAL number NEXT_EQUATION x_term y_term TOKEN_IGUAL number END_SYSTEM')
@@ -101,13 +101,13 @@ class ptParser(Parser):
         self.coefficients = np.array([[p.x_term0, p.y_term0],
                                       [p.x_term1, p.y_term1]])
         self.results = np.array([p.number0, p.number1])
-        print(self.coefficients)
-        print(self.results)
+        #print(self.coefficients)
+        #print(self.results)
         return p.END_SYSTEM
         
     @_('system')
     def number(self, p):
-        return np.linalg.solve(self.coefficients, self.results)
+        return (self.coefficients, self.results, np.linalg.solve(self.coefficients, self.results))
     
     '''@_('x_term z_term y_term TOKEN_IGUAL number')
     def equation(self, p):
@@ -152,7 +152,9 @@ if __name__ == '__main__':
     while True:
         try:
             text = input('Parsertongue > ')
-            solutions = parser.parse(lexer.tokenize(text))
+            coefficients, results, solutions = parser.parse(lexer.tokenize(text))
+            print(coefficients)
+            print(results)
             print(solutions)
             #need code here to show solutions
         except EOFError:
