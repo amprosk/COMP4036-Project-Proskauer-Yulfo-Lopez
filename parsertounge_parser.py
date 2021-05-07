@@ -10,10 +10,10 @@ class ptParser(Parser):
     # Get the token list from the lexer (required)
     tokens = ptLexer.tokens
     
-#    precedence = (
-#       ('left', TOKEN_SUM, TOKEN_MINUS), 
-#       ('left', TOKEN_INT, TOKEN_PERIOD),
-#       ('left', TOKEN_X, TOKEN_Y, TOKEN_Z), )
+    precedence = (
+       ('left', TOKEN_X, TOKEN_Y, TOKEN_Z),
+       ('left', TOKEN_SUM, TOKEN_MINUS), 
+       ('left', TOKEN_INT, TOKEN_PERIOD), )
 
     #Create numpy array to store coefficients/result
     def __init__(self):
@@ -87,12 +87,27 @@ class ptParser(Parser):
         return -1.0
         
     @_('x_term y_term z_term TOKEN_IGUAL number NEXT_EQUATION x_term y_term z_term TOKEN_IGUAL number NEXT_EQUATION x_term y_term z_term TOKEN_IGUAL number END_SYSTEM')
-    def (self, p):
+    def system(self, p):
         self.coefficients = np.array([[p.x_term0, p.y_term0, p.z_term0],
                                       [p.x_term1, p.y_term1, p.z_term1],
                                       [p.x_term2, p.y_term2, p.z_term2]])
-        return 
+        self.results = np.array([p.number0, p.number1, p.number2])
+        print(self.coefficients)
+        print(self.results)
+        return p.END_SYSTEM
+    
+    @_('x_term y_term TOKEN_IGUAL number NEXT_EQUATION x_term y_term TOKEN_IGUAL number END_SYSTEM')
+    def system(self, p):
+        self.coefficients = np.array([[p.x_term0, p.y_term0],
+                                      [p.x_term1, p.y_term1]])
+        self.results = np.array([p.number0, p.number1])
+        print(self.coefficients)
+        print(self.results)
+        return p.END_SYSTEM
         
+    @_('system')
+    def number(self, p):
+        return np.linalg.solve(self.coefficients, self.results)
     
     '''@_('x_term z_term y_term TOKEN_IGUAL number')
     def equation(self, p):
