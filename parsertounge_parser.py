@@ -108,39 +108,6 @@ class ptParser(Parser):
     @_('system')
     def number(self, p):
         return (self.coefficients, self.results, np.linalg.solve(self.coefficients, self.results))
-    
-    '''@_('x_term z_term y_term TOKEN_IGUAL number')
-    def equation(self, p):
-        return np.array([p.x_term, p.y_term, p.z_term, p.number])
-        
-    @_('y_term x_term z_term TOKEN_IGUAL number')
-    def equation(self, p):
-        return np.array([p.x_term, p.y_term, p.z_term, p.number])
-    
-    @_('y_term z_term x_term TOKEN_IGUAL number')
-    def equation(self, p):
-        return np.array([p.x_term, p.y_term, p.z_term, p.number])
-    
-    @_('z_term x_term y_term TOKEN_IGUAL number')
-    def equation(self, p):
-        return np.array([p.x_term, p.y_term, p.z_term, p.number])
-    
-    @_('z_term y_term x_term TOKEN_IGUAL number')
-    def equation(self, p):
-        return np.array([p.x_term, p.y_term, p.z_term, p.number])
-        
-    @_('equation NEXT_EQUATION equation NEXT_EQUATION equation END_SYSTEM')
-    def system(self, p):
-        self.coefficients[0] = equation0[:3]
-        self.coefficients[1] = equation1[:3]
-        self.coefficients[2] = equation2[:3]
-        self.results[0] = equation0[4]
-        self.results[1] = equation1[4]
-        self.results[0] = equation2[4]
-        return END_SYSTEM
-    
-    #@_('END_SYSTEM')
-    #def'''
 
 if __name__ == '__main__':
     lexer = ptLexer()
@@ -152,10 +119,10 @@ if __name__ == '__main__':
     while True:
         try:
             text = input('Parsertongue > ')
-            coefficients, results, solutions = parser.parse(lexer.tokenize(text))
-            print(coefficients)
-            print(results)
+            solutions = parser.parse(lexer.tokenize(text))
+            #solutions will be a number if inputting terms
+            #it will be a tuple of coefficients, results, solutions arrays if inputting equations
             print(solutions)
-            #need code here to show solutions
+            #need code here to show solutions or number 
         except EOFError:
             break
