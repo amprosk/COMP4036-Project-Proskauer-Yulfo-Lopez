@@ -171,34 +171,45 @@ class ptParser(Parser):
         return (self.coefficients, self.results, self.solutions)
 
 if __name__ == '__main__':
+    # Declare and Assign Lexer/Parser Objects
     lexer = ptLexer()
     parser = ptParser()
     
     while True:
          try:
+            # Constantly requests input from the user
             text = input('Parsertongue > ')
+            # Tokenizes then parses user input
             output = parser.parse(lexer.tokenize(text))
+            # Check if the output is the solution to a system or if it just a number
             if type(output) is tuple:
+                # Unpack tuple
                 coefficients, results, solutions = output
+                # Display equations and solutions if system of 2 equations is solved
                 if solutions.size == 2:
                     print("Equation 1: (%r)x + (%r)y = %r" % (coefficients[0,0], coefficients[0,1], results[0]))
                     print("Equation 2: (%r)x + (%r)y = %r" % (coefficients[1,0], coefficients[1,1], results[1]))
                     print("Solutions:\n x = %r\n y = %r" % (solutions[0], solutions[1]))
+                # Display equations and solutions if system of 3 equations is solved
                 elif solutions.size == 3:
                     print("Equation 1: (%r)x + (%r)y + (%r)z = %r" % (coefficients[0,0], coefficients[0,1], coefficients[0,2], results[0]))
                     print("Equation 2: (%r)x + (%r)y + (%r)z = %r" % (coefficients[1,0], coefficients[1,1], coefficients[1,2], results[1]))
                     print("Equation 3: (%r)x + (%r)y + (%r)z = %r" % (coefficients[2,0], coefficients[2,1], coefficients[2,2], results[2]))
                     print("Solutions:\n x = %r\n y = %r\n z = %r" % (solutions[0], solutions[1], solutions[2]))
+                # Display equation and notify user if it was unsolvable
                 else:
+                    # System was 2 equations
                     if results.size == 2:
                         print("Equation 1: (%r)x + (%r)y = %r" % (coefficients[0,0], coefficients[0,1], results[0]))
                         print("Equation 2: (%r)x + (%r)y = %r" % (coefficients[1,0], coefficients[1,1], results[1]))
                         print("ERROR OCCURRED, THIS SYSTEM OF EQUATIONS IS NOT SOLVABLE")
+                    # System was 3 equations
                     elif results.size == 3:
                         print("Equation 1: (%r)x + (%r)y + (%r)z = %r" % (coefficients[0,0], coefficients[0,1], coefficients[0,2], results[0]))
                         print("Equation 2: (%r)x + (%r)y + (%r)z = %r" % (coefficients[1,0], coefficients[1,1], coefficients[1,2], results[1]))
                         print("Equation 3: (%r)x + (%r)y + (%r)z = %r" % (coefficients[2,0], coefficients[2,1], coefficients[2,2], results[2]))
                         print("ERROR OCCURRED, THIS SYSTEM OF EQUATIONS IS NOT SOLVABLE")
+            # Simply print output if not the solutions to a system
             else:
                 print(output)
         except EOFError:
