@@ -130,6 +130,12 @@ y = 2.0624000000000002
 z = 2.3200000000000003
 ```
 
+## UNSOLVABLE EXAMPLES
+Like any real matrix there can never be a system of equations where only one variable has 2 to 3 inputs. In a system of equations you must have at least one value for each variable. 
+
+Here are some examples that will result in `ERROR MESSAGES`:
+
+
 
 ## Are you still unsure about how this language works?
 ##### Video Tutorial on How to use [`Parsertongue`](LINK).
