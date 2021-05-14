@@ -78,13 +78,13 @@ When you are finished writing your 2 or 3 equations, end the system by using `#`
 > >Parsertongue > 3x + 3y - 2z = 4 & 2x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
 >
 > _Parsertongue Output_
-> Equation 1: (3.0)x + (3.0)y + (-2.0)z = 4.0
-> Equation 2: (2.0)x + (1.0)y + (1.0)z = 5.2
-> Equation 3: (-1.0)x + (9.0)y + (-4.2)z = 8.0
-> Solutions:
->  x = 0.7379061371841154
->  y = 1.846931407942239
->  z = 1.8772563176895314
+> > Equation 1: (3.0)x + (3.0)y + (-2.0)z = 4.0
+> > Equation 2: (2.0)x + (1.0)y + (1.0)z = 5.2
+> > Equation 3: (-1.0)x + (9.0)y + (-4.2)z = 8.0
+> > Solutions:
+> >  x = 0.7379061371841154
+> >  y = 1.846931407942239
+> >  z = 1.8772563176895314
 
 
 > _`Parsertongue`_ _requires the leading variable x in each equation to have an attached coefficient or operator_
@@ -107,13 +107,13 @@ When you are finished writing your 2 or 3 equations, end the system by using `#`
 > 
 > Both cases would give the following output
 > _Parsertongue Output_
-> Equation 1: (3.0)x + (3.0)y + (-2.0)z = 4.0
-> Equation 2: (1.0)x + (1.0)y + (1.0)z = 5.2
-> Equation 3: (-1.0)x + (9.0)y + (-4.2)z = 8.0
-> Solutions:
->  x = 0.8176
->  y = 2.0624000000000002
->  z = 2.3200000000000003
+> > Equation 1: (3.0)x + (3.0)y + (-2.0)z = 4.0
+> > Equation 2: (1.0)x + (1.0)y + (1.0)z = 5.2
+> > Equation 3: (-1.0)x + (9.0)y + (-4.2)z = 8.0
+> > Solutions:
+> >  x = 0.8176
+> >  y = 2.0624000000000002
+> >  z = 2.3200000000000003
 
 
 
