@@ -3,7 +3,7 @@
 ## Project Description
 `Parsertongue` is a Python based Programming Language that was created for a class project and may or may not be used for other purposes. The name was inspired after learning about parsers in class and by the fictional language to talk to snakes in the Harry Potter series, Parseltongue (relevant since the language is coded in Python).
 ### Functionality
-For now, `Parsertongue` is just a calculator that recognizes multivariable equations in the form of matrices. Later on, it can be used for more advanced programming jobs. 
+For now, `Parsertongue` is just a calculator that recognizes multivariable systems of equations writen in plain text and solve them. Later on, it can be used for more advanced programming jobs. 
 
 The user inputs a multivariable equation in standard form, `Parsertongue` can recognize the x, y, & z values. Whether it is a linear system of 2 or 3 variables, this language can efficiently output your solutions in a fraction of a second.
 
@@ -148,5 +148,5 @@ ERROR OCCURRED, THIS SYSTEM OF EQUATIONS IS NOT SOLVABLE
 ```
 
 ## Are you still unsure about how this language works?
-##### Video Tutorial on How to use [`Parsertongue`](LINK).
+##### Video Tutorial on How to use [`Parsertongue`](https://youtu.be/cbaGi7vo26o).
 
