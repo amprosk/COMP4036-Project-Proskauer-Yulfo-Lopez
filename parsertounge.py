@@ -163,12 +163,21 @@ if __name__ == '__main__':
     #print(solutions)
     
     while True:
-        try:
+         try:
             text = input('Parsertongue > ')
-            solutions = parser.parse(lexer.tokenize(text))
-            #solutions will be a number if inputting terms
-            #it will be a tuple of coefficients, results, solutions arrays if inputting equations
-            print(solutions)
-            #need code here to show solutions or number 
+            output = parser.parse(lexer.tokenize(text))
+            if type(output) is tuple:
+                coefficients, results, solutions = output
+                if solutions.size == 2:
+                    print("Equation 1: (%r)x + (%r)y = %r" % (coefficients[0,0], coefficients[0,1], results[0]))
+                    print("Equation 2: (%r)x + (%r)y = %r" % (coefficients[1,0], coefficients[1,1], results[1]))
+                    print("Solutions:\n x = %r\n y = %r" % (solutions[0], solutions[1]))
+                elif solutions.size == 3:
+                    print("Equation 1: (%r)x + (%r)y + (%r)z = %r" % (coefficients[0,0], coefficients[0,1], coefficients[0,2], results[0]))
+                    print("Equation 2: (%r)x + (%r)y + (%r)z = %r" % (coefficients[1,0], coefficients[1,1], coefficients[1,2], results[1]))
+                    print("Equation 3: (%r)x + (%r)y + (%r)z = %r" % (coefficients[2,0], coefficients[2,1], coefficients[2,2], results[2]))
+                    print("Solutions:\n x = %r\n y = %r\n z = %r" % (solutions[0], solutions[1], solutions[2]))
+            else:
+                print(output)
         except EOFError:
             break
