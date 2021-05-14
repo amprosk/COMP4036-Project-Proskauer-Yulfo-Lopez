@@ -34,7 +34,7 @@ Sly is a python library for writing parsers and compilers.
 
 ### IMPORTANT Minor Language Inconveniences
 
-> _`Parsertongue` cannot recognize empty values!!_
+> _`Parsertongue`_ _cannot recognize empty values!!_
 > 
 > Say we have the following equation as an input for a 3x3 matrix:
 > 
@@ -49,13 +49,12 @@ Sly is a python library for writing parsers and compilers.
 > Example: 2x + _0y_ + z = 2; 3x - 2y + 3z = 4; 7x - 7y + 9z = 8;
  
 
-> _This language cannot identify the values of said specific out of order variables
+> _`Parsertongu`_ _cannot identify the values of said specific out of order variables!!_
 > This language does not evaluate the equation properly if the user inputs a multivariable equation in a different order that is not from _x-z_.
 > Example: 3x - 2z + 3y = 4
 > It will read as: [3 -2 3][4] when it should be [3 3 -2][4]
 
 
-### Are you still unsure about how Parsertongue works?
+#### Are you still unsure about how this language works?
+##### Video Tutorial on How to use [`Parsertongue`](LINK).
 
-#### Video Tutorial on How to use `Parsertongue`
-This link will take you directly to the [`Parsertongue` Tutorial Video](LINK).
