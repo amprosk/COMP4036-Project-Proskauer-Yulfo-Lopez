@@ -7,7 +7,7 @@ For now, `Parsertongue` is just a calculator that recognizes multivariable equat
 
 The user inputs a multivariable equation in standar form, `Parsertongue` can recognize the x, y, & z values. Let it be a 2x2 matrix or a 3x3 matrix, this language can efficiently output your multivariable values in just seconds.
 
-## Instalations
+## Installations
 Now, in order for you to effectively enjoy using `Parsertongue` you must install a few things!
 
 First things first, you must have your preferred `Python IDE` downloaded to your computer. 
@@ -31,6 +31,12 @@ Sly is a python library for writing parsers and compilers.
 
 > If you'd like more info on the library `sly` click on SLY below.       
 > More info on [SLY](https://sly.readthedocs.io/en/latest/sly.html).
+> 
+
+## Basic Writing Rules
+Once you install everything, you are now ready to use this language.
+When writing a 2x2 or a 3x3 matrix after each equation you must seperate them by using `&` key.
+When you are finished writing your 2 or 3 equations, end your matrix by using `#` key.
 
 ### IMPORTANT Minor Language Inconveniences
 
