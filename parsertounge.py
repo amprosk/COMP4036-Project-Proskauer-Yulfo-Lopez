@@ -1,7 +1,55 @@
 import sly
 from sly import Parser
-from parsertounge_lexer import ptLexer
 import numpy as np
+
+import sly
+from sly import Lexer
+
+#Creating the lexer for our programming language
+
+#Errors
+class Error:
+    def __init__(self, error_name, details):
+        self.error_name = error_name
+        self.details = details
+
+    def as_string(self):
+        result = f'{self.error_name}: {self.details}'
+        return result
+
+class IllegalCharError(Error):
+    def __init__(self, details):
+        super().__init__('Illegal Character', details)
+
+#Lexer Class
+class ptLexer(Lexer):
+
+    # Set of token names.   This is always required
+    tokens = { TOKEN_INT, TOKEN_PERIOD, TOKEN_SUM, 
+              TOKEN_MINUS, TOKEN_IGUAL, TOKEN_X, TOKEN_Y, TOKEN_Z, NEXT_EQUATION, END_SYSTEM }
+
+    # String containing ignored characters between tokens
+    ignore = ' \t'
+
+    # Regular expression rules for tokens
+
+    #Tokens
+    TOKEN_INT        = r'\d+'
+    TOKEN_PERIOD     = r'\.'
+    TOKEN_SUM        = r'\+'
+    TOKEN_MINUS      = r'-'
+    TOKEN_IGUAL      = r'='
+    TOKEN_X          = r'[xX]'
+    TOKEN_Y          = r'[yY]'
+    TOKEN_Z          = r'[zZ]'
+    NEXT_EQUATION    = r'&'
+    END_SYSTEM       = r'#'
+    
+    #Numbers
+    @_(r'\d+')
+    def TOKEN_INT(self, t):
+        t.value = int(t.value)
+        return t
 
 class ptParser(Parser):
     # Check State
