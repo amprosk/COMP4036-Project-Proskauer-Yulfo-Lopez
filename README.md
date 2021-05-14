@@ -29,7 +29,7 @@ Once you download your Python IDE, go to your computer or apps terminal and copy
 This will install sly's latest version (sly 0.4) onto your computer so you can get started using Parsertongue.
 
 > If you'd like more info on the library `sly` check out the link below.       
-> More info on SLY: https://sly.readthedocs.io/en/latest/sly.html
+> More info on [SLY](https://sly.readthedocs.io/en/latest/sly.html) here.
 
 
 ### How to use
