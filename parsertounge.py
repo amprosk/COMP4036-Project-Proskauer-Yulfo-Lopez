@@ -1,9 +1,7 @@
 import sly
 from sly import Parser
-import numpy as np
-
-import sly
 from sly import Lexer
+import numpy as np
 
 #Creating the lexer for our programming language
 
