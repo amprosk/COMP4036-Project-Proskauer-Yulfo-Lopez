@@ -1,4 +1,4 @@
-## Welcome! This is `Parsertongue` a Python Programming Language
+## Introducing Parsertongue - Python Programming Language
 
 ## Project Description
 `Parsertongue` is a Python Programming Language that was created for a class project and may or may not be used for other purposes. We came up with the name after learning about parsers and to give it some character we added the word "tongue" simbolizing language.
@@ -32,21 +32,28 @@ Sly is a python library for writing parsers and compilers.
 > If you'd like more info on the library `sly` click on SLY below.       
 > More info on [SLY](https://sly.readthedocs.io/en/latest/sly.html).
 
-### What NOT to do
-> ## Important Note: _`Parsertongue` cannot recognize empty values!!_
+### Minor Inconveniences
+
+> #### Important Note: _`Parsertongue` cannot recognize empty values!!_
 > 
 > Say we have the following equation as an input for a 3x3 matrix:
 > 
-> Example: 2x + z = 2
+> Example: 2x + z = 2; 3x - 2y + 3z = 4; 7x - 7y + 9z = 8;
 > 
-> `Parsertongue` cannot identify if _y_ is there or not, it will simply read each token as it would normally read it.
+> `Parsertongue` cannot identify the missing _y_ in 2x + z = 2, it will simply read each token as it would normally read it and it would completey disregard the missiong variable.
 > 
-> There is a simple & quick fix to that problem! 
+> BUT! There is a simple & quick fix to that problem! 
 > 
 > When inputing an equation with an empty value, simply write _0_ and the _empty variable_ you want.
 > 
-> Example: 2x + _0y_ + z = 2
+> Example: 2x + _0y_ + z = 2; 3x - 2y + 3z = 4; 7x - 7y + 9z = 8;
+> 
+> This language does not evaluate the equation correctly if the user inputs a multivariable equation in a different order that is not from _x-z_.
+> Example: 3x - 2z + 3y = 4
+> It will read as: [3 -2 3][4] when it should be [3 3 -2][4]
 
 
-### How to use `Parsertongue`
+### Are you still unsure about how Parsertongue works?
+
+#### Video Tutorial on How to use `Parsertongue`
 This link will take you directly to the [`Parsertongue` Tutorial Video](LINK).
