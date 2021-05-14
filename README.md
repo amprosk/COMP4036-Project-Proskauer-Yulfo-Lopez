@@ -1,7 +1,7 @@
 ## Introducing Parsertongue - Python Programming Language
 
 ## Project Description
-`Parsertongue` is a Python based Programming Language that was created for a class project and may or may not be used for other purposes. The name was inspired after learning about parsers in class and by the fictional language to talk to snakes in the Harry Potter series, Parseltongue (since the language is coded in Python).
+`Parsertongue` is a Python based Programming Language that was created for a class project and may or may not be used for other purposes. The name was inspired after learning about parsers in class and by the fictional language to talk to snakes in the Harry Potter series, Parseltongue (relevant since the language is coded in Python).
 ### Functionality
 For now, `Parsertongue` is just a calculator that recognizes multivariable equations in the form of matrices. Later on, it can be used for more advanced programming jobs. 
 
