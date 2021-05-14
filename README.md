@@ -9,6 +9,9 @@
 First things first, you must have your preferred application that runs python programming already downloaded to your computer. If not you can download one of the following: PyCharm, VisualStudioCode or Xcode (if you have MacOS). There are plenty of websites where you canalso run python programming.
 
 Once you download **that** you want to go to your terminal and copy the following:
+(highlight) pip install sly
+More info on SLY:
+
 
 
 #### How to use
