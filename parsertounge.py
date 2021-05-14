@@ -65,6 +65,7 @@ class ptParser(Parser):
     def __init__(self):
         self.coefficients = np.zeros((3, 3))
         self.results = np.zeros((3,1))
+        self.solutions = np.array([0])
         
 
     
@@ -153,14 +154,15 @@ class ptParser(Parser):
         
     @_('system')
     def number(self, p):
-        return (self.coefficients, self.results, np.linalg.solve(self.coefficients, self.results))
+        try:
+            self.solutions = np.linalg.solve(self.coefficients, self.results)
+        except np.linalg.LinAlgError:
+            self.solutions = np.array([0])
+        return (self.coefficients, self.results, self.solutions)
 
 if __name__ == '__main__':
     lexer = ptLexer()
     parser = ptParser()
-    #text = "5x+3y-z=6 & 7.2x-8y+1.9z=6.2 & 13y-7.2x+z=4.2 #"
-    #solutions = parser.parse(lexer.tokenize(text))
-    #print(solutions)
     
     while True:
          try:
@@ -177,6 +179,16 @@ if __name__ == '__main__':
                     print("Equation 2: (%r)x + (%r)y + (%r)z = %r" % (coefficients[1,0], coefficients[1,1], coefficients[1,2], results[1]))
                     print("Equation 3: (%r)x + (%r)y + (%r)z = %r" % (coefficients[2,0], coefficients[2,1], coefficients[2,2], results[2]))
                     print("Solutions:\n x = %r\n y = %r\n z = %r" % (solutions[0], solutions[1], solutions[2]))
+                else:
+                    if results.size == 2:
+                        print("Equation 1: (%r)x + (%r)y = %r" % (coefficients[0,0], coefficients[0,1], results[0]))
+                        print("Equation 2: (%r)x + (%r)y = %r" % (coefficients[1,0], coefficients[1,1], results[1]))
+                        print("ERROR OCCURRED, THIS SYSTEM OF EQUATIONS IS NOT SOLVABLE")
+                    elif results.size == 3:
+                        print("Equation 1: (%r)x + (%r)y + (%r)z = %r" % (coefficients[0,0], coefficients[0,1], coefficients[0,2], results[0]))
+                        print("Equation 2: (%r)x + (%r)y + (%r)z = %r" % (coefficients[1,0], coefficients[1,1], coefficients[1,2], results[1]))
+                        print("Equation 3: (%r)x + (%r)y + (%r)z = %r" % (coefficients[2,0], coefficients[2,1], coefficients[2,2], results[2]))
+                        print("ERROR OCCURRED, THIS SYSTEM OF EQUATIONS IS NOT SOLVABLE")
             else:
                 print(output)
         except EOFError:
