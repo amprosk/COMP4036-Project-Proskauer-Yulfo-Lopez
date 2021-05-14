@@ -1,11 +1,11 @@
 ## Introducing Parsertongue - Python Programming Language
 
 ## Project Description
-`Parsertongue` is a Python Programming Language that was created for a class project and may or may not be used for other purposes. We came up with the name after learning about parsers and to give it some character we added the word "tongue" simbolizing language.
+`Parsertongue` is a Python based Programming Language that was created for a class project and may or may not be used for other purposes. The name was inspired after learning about parsers in class and by the fictional language to talk to snakes in the Harry Potter series, Parseltongue (since the language is coded in Python).
 ### Functionality
 For now, `Parsertongue` is just a calculator that recognizes multivariable equations in the form of matrices. Later on, it can be used for more advanced programming jobs. 
 
-The user inputs a multivariable equation in standar form, `Parsertongue` can recognize the x, y, & z values. Let it be a 2x2 matrix or a 3x3 matrix, this language can efficiently output your multivariable values in just seconds.
+The user inputs a multivariable equation in standard form, `Parsertongue` can recognize the x, y, & z values. Whether it is a linear system of 2 or 3 variables, this language can efficiently output your solutions in a fraction of a second.
 
 ## Installations
 Now, in order for you to effectively enjoy using `Parsertongue` you must install a few things!
@@ -26,10 +26,10 @@ You also need to `install` two python libraries:
 ### Installing Libraries
 Once you download your `Python IDE`, go to your computer or app's terminal and copy the following command line:
 > NumPy:
-> > `pip install numpy`
+> `pip install numpy`
 > 
-> Sly:
-> > `pip install sly` 
+> SLY:
+> `pip install sly` 
 
 This will automatically download and install sly's latest version (sly 0.4) onto your computer so you can get started using `Parsertongue`.
 
@@ -41,8 +41,8 @@ Sly is a python library for writing parsers and compilers.
 
 ## Basic Writing Rules
 Once you install everything, you are now ready to use this language.
-When writing a 2x2 or a 3x3 matrix after each equation you must seperate them by using `&` key.
-When you are finished writing your 2 or 3 equations, end your matrix by using `#` key.
+When writing a system of 2 or 3 equations, after each equation you must seperate them by using `&` key.
+When you are finished writing your 2 or 3 equations, end the system by using `#` key.
 
 ### IMPORTANT Minor Language Inconveniences
 
@@ -53,7 +53,7 @@ When you are finished writing your 2 or 3 equations, end your matrix by using `#
 > Example: 
 > >Parsertongue > 2x + z = 4 & 3x - 2y + 3z = 4 & 7x - 7y + 9z = 8 #
 > 
-> This language cannot identify the missing _y_ in 2x + z = 2, it will simply read each token as it would normally read it and it would completey disregard the missiong variable.
+> This language cannot identify the missing _y_ in 2x + z = 2, it will result in a syntax error.
 > 
 > BUT! There is a simple & quick fix to that problem! 
 > 
@@ -70,14 +70,18 @@ When you are finished writing your 2 or 3 equations, end your matrix by using `#
 > Example: 
 > 
 > _User Input_
-> >Parsertongue > 3x - 2z + 3y = 4
+> >Parsertongue > 3x - 2z + 3y = 4 & 2x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
 > >
-> _Parsertongue Output_
-> >Parsertongue > [3 -2 3][4]
+> Would give a syntax error because the first equation is out of order. Instead, we need:
 > 
-> Instead of:
-> >Parsertongue > [3 3 -2][4]
+> _User Input_
+> >Parsertongue > 3x - 2z + 3y = 4 & 2x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
+>
+> _Parsertongue Output_
 
+
+> _`Parsertongue`_ _requires the leading variable x in each  to have an attached coefficient or operator_
+> This language does not evaluate the equation properly if the user inputs a multivariable equation in a different order that is not from _x-z_.
 
 
 #### Are you still unsure about how this language works?
