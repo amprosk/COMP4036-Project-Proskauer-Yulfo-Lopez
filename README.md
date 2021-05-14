@@ -131,14 +131,22 @@ z = 2.3200000000000003
 ```
 
 ## UNSOLVABLE EXAMPLES
-Like any real matrix there can never be a system of equations where only one variable has 2 to 3 inputs. In a system of equations you must have at least one value for each variable. 
+Like any real matrix there can never be a system of equations where only one variable has 2 to 3 inputs. In a system of equations you must have at least one value for each variable. If the needs aren't met, then the result will be an error message stating it is unsolvable.
 
 Here are some examples that will result in `ERROR MESSAGES`:
+```
+Parsertongue > 4x+0y=4 & 5x+0y=3 #
+Equation 1: (4)x + (0)y = 4
+Equation 2: (5)x + (0)y = 3
+ERROR OCCURRED, THIS SYSTEM OF EQUATIONS IS NOT SOLVABLE
 
-
+Parsertongue > 5x-3y+0z = 1 & -x + 1.2y -0z = -2.4 & 8.6x - 69y +0z = 32#
+Equation 1: (5.0)x + (-3.0)y + (0.0)z = 1.0
+Equation 2: (-1.0)x + (1.2)y + (0.0)z = -2.4
+Equation 3: (8.6)x + (-69.0)y + (0.0)z = 32.0
+ERROR OCCURRED, THIS SYSTEM OF EQUATIONS IS NOT SOLVABLE
+```
 
 ## Are you still unsure about how this language works?
 ##### Video Tutorial on How to use [`Parsertongue`](LINK).
-
-ERROR OCCURRED, THIS SYSTEM OF EQUATIONS IS NOT SOLVABLE
 
