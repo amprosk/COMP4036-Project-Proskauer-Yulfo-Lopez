@@ -71,7 +71,7 @@ When you are finished writing your 2 or 3 equations, end the system by using `#`
 > 
 > _User Input_
 > >Parsertongue > 3x - 2z + 3y = 4 & 2x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
-> >
+> 
 > Would give a syntax error because the first equation is out of order. Instead, we need:
 > 
 > _User Input_
@@ -80,8 +80,24 @@ When you are finished writing your 2 or 3 equations, end the system by using `#`
 > _Parsertongue Output_
 
 
-> _`Parsertongue`_ _requires the leading variable x in each  to have an attached coefficient or operator_
-> This language does not evaluate the equation properly if the user inputs a multivariable equation in a different order that is not from _x-z_.
+> _`Parsertongue`_ _requires the leading variable x in each equation to have an attached coefficient or operator_
+> 
+> If x does not have a leading coefficicent or operator (+ or -), it will result in a syntax error.
+> 
+> Example: 
+> _User Input_
+> >Parsertongue > 3x - 2z + 3y = 4 & x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
+> >
+> Would give a syntax error because x does not have a leading coefficient or operator. Instead, we need:
+> 
+> _User Input_
+> >Parsertongue > 3x - 2z + 3y = 4 & +x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
+>
+> Or alternatively:
+> 
+> _User Input_
+> >Parsertongue > 3x - 2z + 3y = 4 & 1x + y + z = 5.2 & -x + 9y - 4.2z = 8 # 
+
 
 
 #### Are you still unsure about how this language works?
