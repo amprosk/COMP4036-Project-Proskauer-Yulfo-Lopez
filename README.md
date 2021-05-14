@@ -49,6 +49,7 @@ When you are finished writing your 2 or 3 equations, end the system by using `#`
 _`Parsertongue`_ _cannot recognize empty values!!_
  
 Say we have the following equation as an input for a 3x3 matrix: 
+
 Example: 
 ```
 Parsertongue > 2x + z = 4 & 3x - 2y + 3z = 4 & 7x - 7y + 9z = 8 #
@@ -69,11 +70,13 @@ _`Parsertongue`_ _cannot identify the values of said specific out of order varia
 This language does not evaluate the equation properly if the user inputs a multivariable equation in a different order that is not from _x-z_.
  
 Example: 
- _User Input_
+
+_User Input_
 ```
 Parsertongue > 3x - 2z + 3y = 4 & 2x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
 ```
 Would give a syntax error because the first equation is out of order. Instead, we need:
+
 _User Input_
 ```
 Parsertongue > 3x + 3y - 2z = 4 & 2x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
@@ -96,6 +99,7 @@ _`Parsertongue`_ _requires the leading variable x in each equation to have an at
 If x does not have a leading coefficicent or operator (+ or -), it will result in a syntax error.
 
 Example: 
+
 _User Input_
 ```
 Parsertongue > 3x + 3y - 2z = 4 & x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
@@ -107,11 +111,12 @@ _User Input_
 Parsertongue > 3x + 3y - 2z = 4 & +x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
 ```
 Or alternatively:
+
 _User Input_
 ```
 Parsertongue > 3x + 3y - 2z = 4 & 1x + y + z = 5.2 & -x + 9y - 4.2z = 8 # 
 ```
-Both cases would give the following output
+Both cases would give the following output:
 
 _Parsertongue Output_
 ```
