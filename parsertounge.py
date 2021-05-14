@@ -5,20 +5,6 @@ import numpy as np
 
 #Creating the lexer for our programming language
 
-#Errors
-class Error:
-    def __init__(self, error_name, details):
-        self.error_name = error_name
-        self.details = details
-
-    def as_string(self):
-        result = f'{self.error_name}: {self.details}'
-        return result
-
-class IllegalCharError(Error):
-    def __init__(self, details):
-        super().__init__('Illegal Character', details)
-
 #Lexer Class
 class ptLexer(Lexer):
 
@@ -49,6 +35,7 @@ class ptLexer(Lexer):
         t.value = int(t.value)
         return t
 
+#Parser class
 class ptParser(Parser):
     # Check State
     debugfile = 'parser.txt'
@@ -56,83 +43,102 @@ class ptParser(Parser):
     # Get the token list from the lexer (required)
     tokens = ptLexer.tokens
     
+    #Set precedence to resolve shift/reduce conflicts
     precedence = (
        ('left', TOKEN_X, TOKEN_Y, TOKEN_Z),
        ('left', TOKEN_SUM, TOKEN_MINUS), 
        ('left', TOKEN_INT, TOKEN_PERIOD), )
 
-    #Create numpy array to store coefficients/result
+    #Create numpy array to store coefficients/result/solutions
     def __init__(self):
         self.coefficients = np.zeros((3, 3))
         self.results = np.zeros((3,1))
         self.solutions = np.array([0])
         
-
+    #Grammar Rules
     
+    # Returns value of the interpreted floating point number
     @_('TOKEN_INT TOKEN_PERIOD TOKEN_INT')
     def number(self, p):
         return p.TOKEN_INT0 + (p.TOKEN_INT1)/((10.0)**(len(str(p.TOKEN_INT1))))
     
+    # Returns the value of the integer
     @_('TOKEN_INT')
     def number(self, p):
         return p.TOKEN_INT
-     
+    
+    # Returns value of the number times -1
     @_('TOKEN_MINUS number')
     def number(self, p):
         return p.number * (-1)
     
+    # Returns value of the number
     @_('TOKEN_SUM number')
     def number(self, p):
         return p.number
     
+    # Returns value of the coefficient of x
     @_('x_term')
     def number(self, p):
         return p.x_term
     
+    # Returns value of the coefficient of y
     @_('y_term')
     def number(self, p):
         return p.y_term
     
+    # Returns value of the coefficient of z
     @_('z_term')
     def number(self, p):
         return p.z_term
     
+    # Assign the coefficient number to x
     @_('number TOKEN_X')
     def x_term(self, p):
         return p.number
-        
+    
+    # Assign the coefficient 1 to x
     @_('TOKEN_SUM TOKEN_X')
     def x_term(self, p):
         return 1.0
-        
+    
+    # Assign the coefficient -1 to x
     @_('TOKEN_MINUS TOKEN_X')
     def x_term(self, p):
         return -1.0
     
+    # Assign the coefficient number to y
     @_('number TOKEN_Y')
     def y_term(self, p):
         return p.number
-        
+    
+    # Assign the coefficient 1 to y
     @_('TOKEN_SUM TOKEN_Y')
     def y_term(self, p):
         return 1.0
-        
+    
+    # Assign the coefficient -1 to y
     @_('TOKEN_MINUS TOKEN_Y')
     def y_term(self, p):
         return -1.0
-        
+    
+    # Assign the coefficient number to z
     @_('number TOKEN_Z')
     def z_term(self, p):
         return p.number
-        
+    
+    # Assign the coefficient 1 to z
     @_('TOKEN_SUM TOKEN_Z')
     def z_term(self, p):
         return 1.0
-        
+    
+    # Assign the coefficient -1 to z
     @_('TOKEN_MINUS TOKEN_Z')
     def z_term(self, p):
         return -1.0
-        
+    
+    # Identify a system of 3 equations 
+    # Assign the corresponding coefficients and constants to the corresponding arrays
     @_('x_term y_term z_term TOKEN_IGUAL number NEXT_EQUATION x_term y_term z_term TOKEN_IGUAL number NEXT_EQUATION x_term y_term z_term TOKEN_IGUAL number END_SYSTEM')
     def system(self, p):
         self.coefficients = np.array([[p.x_term0, p.y_term0, p.z_term0],
@@ -143,6 +149,8 @@ class ptParser(Parser):
         #print(self.results)
         return p.END_SYSTEM
     
+    # Identify a system of 2 equations 
+    # Assign the corresponding coefficients and constants to the corresponding arrays
     @_('x_term y_term TOKEN_IGUAL number NEXT_EQUATION x_term y_term TOKEN_IGUAL number END_SYSTEM')
     def system(self, p):
         self.coefficients = np.array([[p.x_term0, p.y_term0],
@@ -151,7 +159,9 @@ class ptParser(Parser):
         #print(self.coefficients)
         #print(self.results)
         return p.END_SYSTEM
-        
+    
+    # Solves the system of equations and returns the coefficients, results, and solutions as a tuple
+    # Solutions is an array with a single element if the system is not solvable
     @_('system')
     def number(self, p):
         try:
