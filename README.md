@@ -26,10 +26,10 @@ You also need to `install` two python libraries:
 ### Installing Libraries
 Once you download your `Python IDE`, go to your computer or app's terminal and copy the following command line:
 > NumPy:
-> `pip install numpy`
+> > `pip install numpy`
 > 
 > Sly:
-> `pip install sly` 
+> > `pip install sly` 
 
 This will automatically download and install sly's latest version (sly 0.4) onto your computer so you can get started using `Parsertongue`.
 
