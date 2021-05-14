@@ -176,7 +176,7 @@ if __name__ == '__main__':
     parser = ptParser()
     
     while True:
-         try:
+        try:
             # Constantly requests input from the user
             text = input('Parsertongue > ')
             # Tokenizes then parses user input
