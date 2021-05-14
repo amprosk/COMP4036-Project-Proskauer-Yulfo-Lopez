@@ -19,12 +19,18 @@ If you do not have one already, you can download one of the following:
 
 ***There are also plenty of websites where you can run python programming without having to download a Python IDE.***
 
-You also need to `install` a python library called `sly`. This will help us build our `Lexer` and `Parser`.
+You also need to `install` two python libraries:
+1. `numpy` - this will help us with the actual math
+2. `sly` - this will help us build our `Lexer` and `Parser`.
 
-### Installing Sly
+### Installing Libraries
 Once you download your `Python IDE`, go to your computer or app's terminal and copy the following command line:
-> `pip install sly` 
+> NumPy:
+> `pip install numpy`
 > 
+> Sly:
+> `pip install sly` 
+
 This will automatically download and install sly's latest version (sly 0.4) onto your computer so you can get started using `Parsertongue`.
 
 Sly is a python library for writing parsers and compilers.
