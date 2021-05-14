@@ -62,7 +62,7 @@ When inputing an equation with an empty value, simply write _0_ and the _empty v
 
 Example: 
 ```
-Parsertongue > 2x + _0y_ + z = 2 & 3x - 2y + 3z = 4 & 7x - 7y + 9z = 8 #
+Parsertongue > 2x + 0y + z = 2 & 3x - 2y + 3z = 4 & 7x - 7y + 9z = 8 #
 ```
 
 #### Minor Inconvenience #2
