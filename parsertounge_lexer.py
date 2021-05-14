@@ -32,11 +32,6 @@ class ptLexer(Lexer):
     def TOKEN_INT(self, t):
         t.value = int(t.value)
         return t
-    
-    #Comments
-    #@_(r'#.*')
-    #def COMMENT(self, t):
-    #    pass
 
 if __name__ == '__main__':
     lexer = ptLexer()
