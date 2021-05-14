@@ -30,6 +30,7 @@ Once you download your `Python IDE`, go to your computer or app's terminal and c
 pip install numpy
 ```
 > More info on [NumPy](https://numpy.org).
+> 
 - SLY:
 ```
 pip install sly
@@ -44,91 +45,85 @@ When writing a system of 2 or 3 equations, after each equation you must seperate
 When you are finished writing your 2 or 3 equations, end the system by using `#` key.
 
 ### IMPORTANT Minor Language Inconveniences
-
-> _`Parsertongue`_ _cannot recognize empty values!!_
-> 
-> Say we have the following equation as an input for a 3x3 matrix:
-> 
-> Example: 
-> >Parsertongue > 2x + z = 4 & 3x - 2y + 3z = 4 & 7x - 7y + 9z = 8 #
-> 
-> This language cannot identify the missing _y_ in 2x + z = 2, it will result in a syntax error.
-> 
-> BUT! There is a simple & quick fix to that problem! 
-> 
-> When inputing an equation with an empty value, simply write _0_ and the _empty variable_ you want.
-> 
-> Example: 
-> >Parsertongue > 2x + _0y_ + z = 2 & 3x - 2y + 3z = 4 & 7x - 7y + 9z = 8 #
+#### Minor Inconvenience #1
+_`Parsertongue`_ _cannot recognize empty values!!_
  
+Say we have the following equation as an input for a 3x3 matrix: 
+Example: 
+```
+Parsertongue > 2x + z = 4 & 3x - 2y + 3z = 4 & 7x - 7y + 9z = 8 #
+```
+This language cannot identify the missing _y_ in 2x + z = 2, it will result in a syntax error.
 
+BUT! There is a simple & quick fix to that problem! 
 
-> _`Parsertongue`_ _cannot identify the values of said specific out of order variables!!_
-> This language does not evaluate the equation properly if the user inputs a multivariable equation in a different order that is not from _x-z_.
-> 
-> Example: 
-> 
-> _User Input_
-> >Parsertongue > 3x - 2z + 3y = 4 & 2x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
-> 
-> Would give a syntax error because the first equation is out of order. Instead, we need:
-> 
-> _User Input_
-> >Parsertongue > 3x + 3y - 2z = 4 & 2x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
->
-> _Parsertongue Output_
-> 
-> > Equation 1: (3.0)x + (3.0)y + (-2.0)z = 4.0
-> > 
-> > Equation 2: (2.0)x + (1.0)y + (1.0)z = 5.2
-> > 
-> > Equation 3: (-1.0)x + (9.0)y + (-4.2)z = 8.0
-> > 
-> > Solutions:
-> > 
-> >  x = 0.7379061371841154
-> >  
-> >  y = 1.846931407942239
-> >  
-> >  z = 1.8772563176895314
+When inputing an equation with an empty value, simply write _0_ and the _empty variable_ you want.
 
+Example: 
+```
+Parsertongue > 2x + _0y_ + z = 2 & 3x - 2y + 3z = 4 & 7x - 7y + 9z = 8 #
+```
 
-> _`Parsertongue`_ _requires the leading variable x in each equation to have an attached coefficient or operator_
-> 
-> If x does not have a leading coefficicent or operator (+ or -), it will result in a syntax error.
-> 
-> Example: 
-> _User Input_
-> >Parsertongue > 3x + 3y - 2z = 4 & x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
-> >
-> Would give a syntax error because x does not have a leading coefficient or operator. Instead, we need:
-> 
-> _User Input_
-> >Parsertongue > 3x + 3y - 2z = 4 & +x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
->
-> Or alternatively:
-> 
-> _User Input_
-> >Parsertongue > 3x + 3y - 2z = 4 & 1x + y + z = 5.2 & -x + 9y - 4.2z = 8 # 
-> 
-> Both cases would give the following output
-> 
-> _Parsertongue Output_
-> 
-> > Equation 1: (3.0)x + (3.0)y + (-2.0)z = 4.0
-> > 
-> > Equation 2: (1.0)x + (1.0)y + (1.0)z = 5.2
-> > 
-> > Equation 3: (-1.0)x + (9.0)y + (-4.2)z = 8.0
-> > 
-> > Solutions:
-> > 
-> >  x = 0.8176
-> >  
-> >  y = 2.0624000000000002
-> >  
-> >  z = 2.3200000000000003
+#### Minor Inconvenience #2
+_`Parsertongue`_ _cannot identify the values of said specific out of order variables!!_
+This language does not evaluate the equation properly if the user inputs a multivariable equation in a different order that is not from _x-z_.
+ 
+Example: 
+ _User Input_
+```
+Parsertongue > 3x - 2z + 3y = 4 & 2x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
+```
+Would give a syntax error because the first equation is out of order. Instead, we need:
+_User Input_
+```
+Parsertongue > 3x + 3y - 2z = 4 & 2x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
+```
+_Parsertongue Output_
+```
+Equation 1: (3.0)x + (3.0)y + (-2.0)z = 4.0
+Equation 2: (2.0)x + (1.0)y + (1.0)z = 5.2
+Equation 3: (-1.0)x + (9.0)y + (-4.2)z = 8.0
+ 
+Solutions:
+x = 0.7379061371841154
+y = 1.846931407942239
+z = 1.8772563176895314
+```
 
+#### Minor Inconvenience #3
+_`Parsertongue`_ _requires the leading variable x in each equation to have an attached coefficient or operator_
+ 
+If x does not have a leading coefficicent or operator (+ or -), it will result in a syntax error.
+
+Example: 
+_User Input_
+```
+Parsertongue > 3x + 3y - 2z = 4 & x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
+```
+Would give a syntax error because x does not have a leading coefficient or operator. Instead, we need:
+
+_User Input_
+```
+Parsertongue > 3x + 3y - 2z = 4 & +x + y + z = 5.2 & -x + 9y - 4.2z = 8 #
+```
+Or alternatively:
+_User Input_
+```
+Parsertongue > 3x + 3y - 2z = 4 & 1x + y + z = 5.2 & -x + 9y - 4.2z = 8 # 
+```
+Both cases would give the following output
+
+_Parsertongue Output_
+```
+Equation 1: (3.0)x + (3.0)y + (-2.0)z = 4.0
+Equation 2: (1.0)x + (1.0)y + (1.0)z = 5.2
+Equation 3: (-1.0)x + (9.0)y + (-4.2)z = 8.0
+
+Solutions:
+x = 0.8176
+y = 2.0624000000000002
+z = 2.3200000000000003
+```
 
 
 #### Are you still unsure about how this language works?
