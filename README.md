@@ -38,7 +38,8 @@ Sly is a python library for writing parsers and compilers.
 > 
 > Say we have the following equation as an input for a 3x3 matrix:
 > 
-> Example: 2x + z = 2; 3x - 2y + 3z = 4; 7x - 7y + 9z = 8;
+> Example: 
+> >Parsertongue > 2x + z = 4 & 3x - 2y + 3z = 4 & 7x - 7y + 9z = 8 #
 > 
 > This language cannot identify the missing _y_ in 2x + z = 2, it will simply read each token as it would normally read it and it would completey disregard the missiong variable.
 > 
@@ -46,15 +47,29 @@ Sly is a python library for writing parsers and compilers.
 > 
 > When inputing an equation with an empty value, simply write _0_ and the _empty variable_ you want.
 > 
-> Example: 2x + _0y_ + z = 2; 3x - 2y + 3z = 4; 7x - 7y + 9z = 8;
+> Example: 
+> >Parsertongue > 2x + _0y_ + z = 2 & 3x - 2y + 3z = 4 & 7x - 7y + 9z = 8 #
  
 
-> _`Parsertongu`_ _cannot identify the values of said specific out of order variables!!_
+
+> _`Parsertongue`_ _cannot identify the values of said specific out of order variables!!_
 > This language does not evaluate the equation properly if the user inputs a multivariable equation in a different order that is not from _x-z_.
-> Example: 3x - 2z + 3y = 4
-> It will read as: [3 -2 3][4] when it should be [3 3 -2][4]
+> 
+> Example: 
+> 
+> _User Input_
+> >Parsertongue > 3x - 2z + 3y = 4
+> >
+> _Parsertongue Output_
+> >Parsertongue > [3 -2 3][4]
+> 
+> Instead of:
+> >Parsertongue > [3 3 -2][4]
+
 
 
 #### Are you still unsure about how this language works?
 ##### Video Tutorial on How to use [`Parsertongue`](LINK).
+
+
 
