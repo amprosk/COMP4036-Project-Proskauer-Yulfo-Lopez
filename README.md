@@ -113,6 +113,7 @@ When you are finished writing your 2 or 3 equations, end the system by using `#`
 > >Parsertongue > 3x + 3y - 2z = 4 & 1x + y + z = 5.2 & -x + 9y - 4.2z = 8 # 
 > 
 > Both cases would give the following output
+> 
 > _Parsertongue Output_
 > 
 > > Equation 1: (3.0)x + (3.0)y + (-2.0)z = 4.0
